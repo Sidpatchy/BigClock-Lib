@@ -2,17 +2,16 @@
 import board
 import neopixel
 import time
-import datetime
+import threading
 
-brightness = (10, 0, 0)
-off = (255, 255, 255)
+color = (255, 0, 0)
 
 pixels = neopixel.NeoPixel(board.D18, 86)
 
-# minutes
+# minutes digit
 def digitOne(number, color):
     display = number
-    global off
+    
     if display == 0:
         pixels[5] = (color)
         pixels[4] = (color)
@@ -32,9 +31,9 @@ def digitOne(number, color):
         pixels[15] = (color)
         pixels[16] = (color)
         pixels[17] = (color)
-        pixels[20] = (off)
-        pixels[19] = (off)
-        pixels[18] = (off)
+        pixels[20] = (0, 0, 0)
+        pixels[19] = (0, 0, 0)
+        pixels[18] = (0, 0, 0)
         pixels.show()
         
     elif display == 1:
@@ -44,21 +43,21 @@ def digitOne(number, color):
         pixels[15] = (color)
         pixels[16] = (color)
         pixels[17] = (color)
-        pixels[5] = (off)
-        pixels[4] = (off)
-        pixels[3] = (off)
-        pixels[6] = (off)
-        pixels[7] = (off)
-        pixels[8] = (off)
-        pixels[20] = (off)
-        pixels[19] = (off)
-        pixels[18] = (off)
-        pixels[9] = (off)
-        pixels[10] = (off)
-        pixels[11] = (off)
-        pixels[12] = (off)
-        pixels[13] = (off)
-        pixels[14] = (off)
+        pixels[5] = (0, 0, 0)
+        pixels[4] = (0, 0, 0)
+        pixels[3] = (0, 0, 0)
+        pixels[6] = (0, 0, 0)
+        pixels[7] = (0, 0, 0)
+        pixels[8] = (0, 0, 0)
+        pixels[20] = (0, 0, 0)
+        pixels[19] = (0, 0, 0)
+        pixels[18] = (0, 0, 0)
+        pixels[9] = (0, 0, 0)
+        pixels[10] = (0, 0, 0)
+        pixels[11] = (0, 0, 0)
+        pixels[12] = (0, 0, 0)
+        pixels[13] = (0, 0, 0)
+        pixels[14] = (0, 0, 0)
         pixels.show()
         
     elif display == 2:
@@ -77,12 +76,12 @@ def digitOne(number, color):
         pixels[12] = (color)
         pixels[13] = (color)
         pixels[14] = (color)
-        pixels[6] = (off)
-        pixels[7] = (off)
-        pixels[8] = (off)
-        pixels[17] = (off)
-        pixels[16] = (off)
-        pixels[15] = (off)
+        pixels[6] = (0, 0, 0)
+        pixels[7] = (0, 0, 0)
+        pixels[8] = (0, 0, 0)
+        pixels[17] = (0, 0, 0)
+        pixels[16] = (0, 0, 0)
+        pixels[15] = (0, 0, 0)
         pixels.show()
 
     elif display == 3:
@@ -101,12 +100,12 @@ def digitOne(number, color):
         pixels[14] = (color)
         pixels[13] = (color)
         pixels[12] = (color)
-        pixels[6] = (off)
-        pixels[7] = (off)
-        pixels[8] = (off)
-        pixels[9] = (off)
-        pixels[10] = (off)
-        pixels[11] = (off)
+        pixels[6] = (0, 0, 0)
+        pixels[7] = (0, 0, 0)
+        pixels[8] = (0, 0, 0)
+        pixels[9] = (0, 0, 0)
+        pixels[10] = (0, 0, 0)
+        pixels[11] = (0, 0, 0)
         pixels.show()
         
     elif display == 4:
@@ -122,15 +121,15 @@ def digitOne(number, color):
         pixels[17] = (color)
         pixels[16] = (color)
         pixels[15] = (color)
-        pixels[5] = (off)
-        pixels[4] = (off)
-        pixels[3] = (off)
-        pixels[9] = (off)
-        pixels[10] = (off)
-        pixels[11] = (off)
-        pixels[12] = (off)
-        pixels[13] = (off)
-        pixels[14] = (off)
+        pixels[5] = (0, 0, 0)
+        pixels[4] = (0, 0, 0)
+        pixels[3] = (0, 0, 0)
+        pixels[9] = (0, 0, 0)
+        pixels[10] = (0, 0, 0)
+        pixels[11] = (0, 0, 0)
+        pixels[12] = (0, 0, 0)
+        pixels[13] = (0, 0, 0)
+        pixels[14] = (0, 0, 0)
         pixels.show()
 
     elif display == 5:
@@ -149,12 +148,12 @@ def digitOne(number, color):
         pixels[14] = (color)
         pixels[13] = (color)
         pixels[12] = (color)
-        pixels[2] = (off)
-        pixels[1] = (off)
-        pixels[0] = (off)
-        pixels[9] = (off)
-        pixels[10] = (off)
-        pixels[11] = (off)
+        pixels[2] = (0, 0, 0)
+        pixels[1] = (0, 0, 0)
+        pixels[0] = (0, 0, 0)
+        pixels[9] = (0, 0, 0)
+        pixels[10] = (0, 0, 0)
+        pixels[11] = (0, 0, 0)
         pixels.show()
 
     elif display == 6:
@@ -176,9 +175,9 @@ def digitOne(number, color):
         pixels[11] = (color)
         pixels[10] = (color)
         pixels[9] = (color)
-        pixels[2] = (off)
-        pixels[1] = (off)
-        pixels[0] = (off)
+        pixels[2] = (0, 0, 0)
+        pixels[1] = (0, 0, 0)
+        pixels[0] = (0, 0, 0)
         pixels.show()
 
     elif display == 7:
@@ -191,18 +190,18 @@ def digitOne(number, color):
         pixels[17] = (color)
         pixels[16] = (color)
         pixels[15] = (color)
-        pixels[6] = (off)
-        pixels[7] = (off)
-        pixels[8] = (off)
-        pixels[20] = (off)
-        pixels[19] = (off)
-        pixels[18] = (off)
-        pixels[9] = (off)
-        pixels[10] = (off)
-        pixels[11] = (off)
-        pixels[12] = (off)
-        pixels[13] = (off)
-        pixels[14] = (off)
+        pixels[6] = (0, 0, 0)
+        pixels[7] = (0, 0, 0)
+        pixels[8] = (0, 0, 0)
+        pixels[20] = (0, 0, 0)
+        pixels[19] = (0, 0, 0)
+        pixels[18] = (0, 0, 0)
+        pixels[9] = (0, 0, 0)
+        pixels[10] = (0, 0, 0)
+        pixels[11] = (0, 0, 0)
+        pixels[12] = (0, 0, 0)
+        pixels[13] = (0, 0, 0)
+        pixels[14] = (0, 0, 0)
         pixels.show()
 
     elif display == 8:
@@ -248,12 +247,11 @@ def digitOne(number, color):
         pixels[15] = (color)
         pixels[16] = (color)
         pixels[17] = (color)
-        pixels[9] = (off)
-        pixels[10] = (off)
-        pixels[11] = (off)
+        pixels[9] = (0, 0, 0)
+        pixels[10] = (0, 0, 0)
+        pixels[11] = (0, 0, 0)
         pixels.show()
 
-# minutes again
 def digitTwo(number, color):   
     if number == 0:
         pixels[26] = (color)
@@ -274,9 +272,9 @@ def digitTwo(number, color):
         pixels[29] = (color)
         pixels[28] = (color)
         pixels[27] = (color)
-        pixels[30] = (off)
-        pixels[31] = (off)
-        pixels[32] = (off)
+        pixels[30] = (0, 0, 0)
+        pixels[31] = (0, 0, 0)
+        pixels[32] = (0, 0, 0)
         pixels.show()
 
     elif number == 1:
@@ -286,21 +284,21 @@ def digitTwo(number, color):
         pixels[33] = (color)
         pixels[34] = (color)
         pixels[35] = (color)
-        pixels[24] = (off)
-        pixels[25] = (off)
-        pixels[26] = (off)
-        pixels[27] = (off)
-        pixels[28] = (off)
-        pixels[29] = (off)
-        pixels[30] = (off)
-        pixels[31] = (off)
-        pixels[32] = (off)
-        pixels[41] = (off)
-        pixels[40] = (off)
-        pixels[39] = (off)
-        pixels[38] = (off)
-        pixels[37] = (off)
-        pixels[36] = (off)
+        pixels[24] = (0, 0, 0)
+        pixels[25] = (0, 0, 0)
+        pixels[26] = (0, 0, 0)
+        pixels[27] = (0, 0, 0)
+        pixels[28] = (0, 0, 0)
+        pixels[29] = (0, 0, 0)
+        pixels[30] = (0, 0, 0)
+        pixels[31] = (0, 0, 0)
+        pixels[32] = (0, 0, 0)
+        pixels[41] = (0, 0, 0)
+        pixels[40] = (0, 0, 0)
+        pixels[39] = (0, 0, 0)
+        pixels[38] = (0, 0, 0)
+        pixels[37] = (0, 0, 0)
+        pixels[36] = (0, 0, 0)
         pixels.show()
 
     elif number == 2:
@@ -319,12 +317,12 @@ def digitTwo(number, color):
         pixels[38] = (color)
         pixels[37] = (color)
         pixels[36] = (color)
-        pixels[27] = (off)
-        pixels[28] = (off)
-        pixels[29] = (off)
-        pixels[33] = (off)
-        pixels[34] = (off)
-        pixels[35] = (off)
+        pixels[27] = (0, 0, 0)
+        pixels[28] = (0, 0, 0)
+        pixels[29] = (0, 0, 0)
+        pixels[33] = (0, 0, 0)
+        pixels[34] = (0, 0, 0)
+        pixels[35] = (0, 0, 0)
         pixels.show()
     
     elif number == 3:
@@ -343,12 +341,12 @@ def digitTwo(number, color):
         pixels[36] = (color)
         pixels[37] = (color)
         pixels[38] = (color)
-        pixels[27] = (off)
-        pixels[28] = (off)
-        pixels[29] = (off)
-        pixels[41] = (off)
-        pixels[40] = (off)
-        pixels[39] = (off)
+        pixels[27] = (0, 0, 0)
+        pixels[28] = (0, 0, 0)
+        pixels[29] = (0, 0, 0)
+        pixels[41] = (0, 0, 0)
+        pixels[40] = (0, 0, 0)
+        pixels[39] = (0, 0, 0)
         pixels.show()
     
     elif number == 4:
@@ -364,15 +362,15 @@ def digitTwo(number, color):
         pixels[33] = (color)
         pixels[34] = (color)
         pixels[35] = (color)
-        pixels[26] = (off)
-        pixels[25] = (off)
-        pixels[24] = (off)
-        pixels[41] = (off)
-        pixels[40] = (off)
-        pixels[39] = (off)
-        pixels[38] = (off)
-        pixels[37] = (off)
-        pixels[36] = (off)
+        pixels[26] = (0, 0, 0)
+        pixels[25] = (0, 0, 0)
+        pixels[24] = (0, 0, 0)
+        pixels[41] = (0, 0, 0)
+        pixels[40] = (0, 0, 0)
+        pixels[39] = (0, 0, 0)
+        pixels[38] = (0, 0, 0)
+        pixels[37] = (0, 0, 0)
+        pixels[36] = (0, 0, 0)
         pixels.show()
     
     elif number == 5:
@@ -391,12 +389,12 @@ def digitTwo(number, color):
         pixels[36] = (color)
         pixels[37] = (color)
         pixels[38] = (color)
-        pixels[23] = (off)
-        pixels[22] = (off)
-        pixels[21] = (off)
-        pixels[41] = (off)
-        pixels[40] = (off)
-        pixels[39] = (off)
+        pixels[23] = (0, 0, 0)
+        pixels[22] = (0, 0, 0)
+        pixels[21] = (0, 0, 0)
+        pixels[41] = (0, 0, 0)
+        pixels[40] = (0, 0, 0)
+        pixels[39] = (0, 0, 0)
         pixels.show()
     
     elif number == 6:
@@ -430,18 +428,18 @@ def digitTwo(number, color):
         pixels[33] = (color)
         pixels[34] = (color)
         pixels[35] = (color)
-        pixels[27] = (off)
-        pixels[28] = (off)
-        pixels[29] = (off)
-        pixels[30] = (off)
-        pixels[31] = (off)
-        pixels[32] = (off)
-        pixels[41] = (off)
-        pixels[40] = (off)
-        pixels[39] = (off)
-        pixels[38] = (off)
-        pixels[37] = (off)
-        pixels[36] = (off)
+        pixels[27] = (0, 0, 0)
+        pixels[28] = (0, 0, 0)
+        pixels[29] = (0, 0, 0)
+        pixels[30] = (0, 0, 0)
+        pixels[31] = (0, 0, 0)
+        pixels[32] = (0, 0, 0)
+        pixels[41] = (0, 0, 0)
+        pixels[40] = (0, 0, 0)
+        pixels[39] = (0, 0, 0)
+        pixels[38] = (0, 0, 0)
+        pixels[37] = (0, 0, 0)
+        pixels[36] = (0, 0, 0)
         pixels.show()
     
     elif number == 8:
@@ -486,12 +484,11 @@ def digitTwo(number, color):
         pixels[35] = (color)
         pixels[34] = (color)
         pixels[33] = (color)
-        pixels[41] = (off)
-        pixels[40] = (off)
-        pixels[39] = (off)
+        pixels[41] = (0, 0, 0)
+        pixels[40] = (0, 0, 0)
+        pixels[39] = (0, 0, 0)
         pixels.show()
 
-# hours
 def digitThree(number, color):
     if number == 0:
         pixels[44] = (color)
@@ -512,9 +509,9 @@ def digitThree(number, color):
         pixels[62] = (color)
         pixels[63] = (color)
         pixels[64] = (color)
-        pixels[53] = (off)
-        pixels[54] = (off)
-        pixels[55] = (off)
+        pixels[53] = (0, 0, 0)
+        pixels[54] = (0, 0, 0)
+        pixels[55] = (0, 0, 0)
         pixels.show()
 
     elif number == 1:
@@ -524,21 +521,21 @@ def digitThree(number, color):
         pixels[56] = (color)
         pixels[57] = (color)
         pixels[58] = (color)
-        pixels[47] = (off)
-        pixels[48] = (off)
-        pixels[49] = (off)
-        pixels[50] = (off)
-        pixels[51] = (off)
-        pixels[52] = (off)
-        pixels[53] = (off)
-        pixels[54] = (off)
-        pixels[55] = (off)
-        pixels[59] = (off)
-        pixels[60] = (off)
-        pixels[61] = (off)
-        pixels[62] = (off)
-        pixels[63] = (off)
-        pixels[64] = (off)
+        pixels[47] = (0, 0, 0)
+        pixels[48] = (0, 0, 0)
+        pixels[49] = (0, 0, 0)
+        pixels[50] = (0, 0, 0)
+        pixels[51] = (0, 0, 0)
+        pixels[52] = (0, 0, 0)
+        pixels[53] = (0, 0, 0)
+        pixels[54] = (0, 0, 0)
+        pixels[55] = (0, 0, 0)
+        pixels[59] = (0, 0, 0)
+        pixels[60] = (0, 0, 0)
+        pixels[61] = (0, 0, 0)
+        pixels[62] = (0, 0, 0)
+        pixels[63] = (0, 0, 0)
+        pixels[64] = (0, 0, 0)
         pixels.show()
 
     elif number == 2:
@@ -557,12 +554,12 @@ def digitThree(number, color):
         pixels[61] = (color)
         pixels[60] = (color)
         pixels[59] = (color)
-        pixels[56] = (off)
-        pixels[57] = (off)
-        pixels[58] = (off)
-        pixels[50] = (off)
-        pixels[51] = (off)
-        pixels[52] = (off)
+        pixels[56] = (0, 0, 0)
+        pixels[57] = (0, 0, 0)
+        pixels[58] = (0, 0, 0)
+        pixels[50] = (0, 0, 0)
+        pixels[51] = (0, 0, 0)
+        pixels[52] = (0, 0, 0)
         pixels.show()
 
     elif number == 3:
@@ -581,12 +578,12 @@ def digitThree(number, color):
         pixels[59] = (color)
         pixels[60] = (color)
         pixels[61] = (color)
-        pixels[62] = (off)
-        pixels[63] = (off)
-        pixels[64] = (off)
-        pixels[50] = (off)
-        pixels[51] = (off)
-        pixels[52] = (off)
+        pixels[62] = (0, 0, 0)
+        pixels[63] = (0, 0, 0)
+        pixels[64] = (0, 0, 0)
+        pixels[50] = (0, 0, 0)
+        pixels[51] = (0, 0, 0)
+        pixels[52] = (0, 0, 0)
         pixels.show()
 
     elif number == 4:
@@ -602,15 +599,15 @@ def digitThree(number, color):
         pixels[46] = (color)
         pixels[45] = (color)
         pixels[44] = (color)
-        pixels[49] = (off)
-        pixels[48] = (off)
-        pixels[47] = (off)
-        pixels[64] = (off)
-        pixels[63] = (off)
-        pixels[62] = (off)
-        pixels[61] = (off)
-        pixels[60] = (off)
-        pixels[59] = (off)
+        pixels[49] = (0, 0, 0)
+        pixels[48] = (0, 0, 0)
+        pixels[47] = (0, 0, 0)
+        pixels[64] = (0, 0, 0)
+        pixels[63] = (0, 0, 0)
+        pixels[62] = (0, 0, 0)
+        pixels[61] = (0, 0, 0)
+        pixels[60] = (0, 0, 0)
+        pixels[59] = (0, 0, 0)
         pixels.show()
     
     elif number == 5:
@@ -629,12 +626,12 @@ def digitThree(number, color):
         pixels[59] = (color)
         pixels[60] = (color)
         pixels[61] = (color)
-        pixels[62] = (off)
-        pixels[63] = (off)
-        pixels[64] = (off)
-        pixels[46] = (off)
-        pixels[45] = (off)
-        pixels[44] = (off)
+        pixels[62] = (0, 0, 0)
+        pixels[63] = (0, 0, 0)
+        pixels[64] = (0, 0, 0)
+        pixels[46] = (0, 0, 0)
+        pixels[45] = (0, 0, 0)
+        pixels[44] = (0, 0, 0)
         pixels.show()
 
     elif number == 6:
@@ -656,9 +653,9 @@ def digitThree(number, color):
         pixels[62] = (color)
         pixels[63] = (color)
         pixels[64] = (color)
-        pixels[44] = (off)
-        pixels[45] = (off)
-        pixels[46] = (off)
+        pixels[44] = (0, 0, 0)
+        pixels[45] = (0, 0, 0)
+        pixels[46] = (0, 0, 0)
         pixels.show()
 
     elif number == 7:
@@ -671,18 +668,18 @@ def digitThree(number, color):
         pixels[59] = (color)
         pixels[57] = (color)
         pixels[58] = (color)
-        pixels[50] = (off)
-        pixels[51] = (off)
-        pixels[52] = (off)
-        pixels[53] = (off)
-        pixels[54] = (off)
-        pixels[55] = (off)
-        pixels[59] = (off)
-        pixels[60] = (off)
-        pixels[61] = (off)
-        pixels[62] = (off)
-        pixels[63] = (off)
-        pixels[64] = (off)
+        pixels[50] = (0, 0, 0)
+        pixels[51] = (0, 0, 0)
+        pixels[52] = (0, 0, 0)
+        pixels[53] = (0, 0, 0)
+        pixels[54] = (0, 0, 0)
+        pixels[55] = (0, 0, 0)
+        pixels[59] = (0, 0, 0)
+        pixels[60] = (0, 0, 0)
+        pixels[61] = (0, 0, 0)
+        pixels[62] = (0, 0, 0)
+        pixels[63] = (0, 0, 0)
+        pixels[64] = (0, 0, 0)
         pixels.show()
 
     elif number == 8:
@@ -728,12 +725,11 @@ def digitThree(number, color):
         pixels[59] = (color)
         pixels[60] = (color)
         pixels[61] = (color)
-        pixels[62] = (off)
-        pixels[63] = (off)
-        pixels[64] = (off)
+        pixels[62] = (0, 0, 0)
+        pixels[63] = (0, 0, 0)
+        pixels[64] = (0, 0, 0)
         pixels.show()
 
-# hours again
 def digitFour(number, color):
     if number == 0:
         pixels[70] = (color)
@@ -754,9 +750,9 @@ def digitFour(number, color):
         pixels[77] = (color)
         pixels[78] = (color)
         pixels[79] = (color)
-        pixels[74] = (off)
-        pixels[75] = (off)
-        pixels[76] = (off)
+        pixels[74] = (0, 0, 0)
+        pixels[75] = (0, 0, 0)
+        pixels[76] = (0, 0, 0)
         pixels.show()
 
     elif number == 1:
@@ -766,21 +762,21 @@ def digitFour(number, color):
         pixels[77] = (color)
         pixels[78] = (color)
         pixels[79] = (color)
-        pixels[74] = (off)
-        pixels[75] = (off)
-        pixels[76] = (off)
-        pixels[80] = (off)
-        pixels[81] = (off)
-        pixels[82] = (off)
-        pixels[83] = (off)
-        pixels[84] = (off)
-        pixels[85] = (off)
-        pixels[73] = (off)
-        pixels[72] = (off)
-        pixels[71] = (off)
-        pixels[70] = (off)
-        pixels[68] = (off)
-        pixels[69] = (off)
+        pixels[74] = (0, 0, 0)
+        pixels[75] = (0, 0, 0)
+        pixels[76] = (0, 0, 0)
+        pixels[80] = (0, 0, 0)
+        pixels[81] = (0, 0, 0)
+        pixels[82] = (0, 0, 0)
+        pixels[83] = (0, 0, 0)
+        pixels[84] = (0, 0, 0)
+        pixels[85] = (0, 0, 0)
+        pixels[73] = (0, 0, 0)
+        pixels[72] = (0, 0, 0)
+        pixels[71] = (0, 0, 0)
+        pixels[70] = (0, 0, 0)
+        pixels[68] = (0, 0, 0)
+        pixels[69] = (0, 0, 0)
         pixels.show()
 
     elif number == 2:
@@ -799,12 +795,12 @@ def digitFour(number, color):
         pixels[82] = (color)
         pixels[81] = (color)
         pixels[80] = (color)
-        pixels[77] = (off)
-        pixels[78] = (off)
-        pixels[79] = (off)
-        pixels[71] = (off)
-        pixels[72] = (off)
-        pixels[73] = (off)
+        pixels[77] = (0, 0, 0)
+        pixels[78] = (0, 0, 0)
+        pixels[79] = (0, 0, 0)
+        pixels[71] = (0, 0, 0)
+        pixels[72] = (0, 0, 0)
+        pixels[73] = (0, 0, 0)
         pixels.show()
 
     elif number == 3:
@@ -823,12 +819,12 @@ def digitFour(number, color):
         pixels[80] = (color)
         pixels[81] = (color)
         pixels[82] = (color)
-        pixels[85] = (off)
-        pixels[84] = (off)
-        pixels[83] = (off)
-        pixels[71] = (off)
-        pixels[72] = (off)
-        pixels[73] = (off)
+        pixels[85] = (0, 0, 0)
+        pixels[84] = (0, 0, 0)
+        pixels[83] = (0, 0, 0)
+        pixels[71] = (0, 0, 0)
+        pixels[72] = (0, 0, 0)
+        pixels[73] = (0, 0, 0)
         pixels.show()
 
     elif number == 4:
@@ -844,15 +840,15 @@ def digitFour(number, color):
         pixels[65] = (color)
         pixels[66] = (color)
         pixels[67] = (color)
-        pixels[68] = (off)
-        pixels[69] = (off)
-        pixels[70] = (off)
-        pixels[85] = (off)
-        pixels[84] = (off)
-        pixels[83] = (off)
-        pixels[82] = (off)
-        pixels[81] = (off)
-        pixels[80] = (off)
+        pixels[68] = (0, 0, 0)
+        pixels[69] = (0, 0, 0)
+        pixels[70] = (0, 0, 0)
+        pixels[85] = (0, 0, 0)
+        pixels[84] = (0, 0, 0)
+        pixels[83] = (0, 0, 0)
+        pixels[82] = (0, 0, 0)
+        pixels[81] = (0, 0, 0)
+        pixels[80] = (0, 0, 0)
         pixels.show()
     
     elif number == 5:
@@ -871,12 +867,12 @@ def digitFour(number, color):
         pixels[80] = (color)
         pixels[81] = (color)
         pixels[82] = (color)
-        pixels[85] = (off)
-        pixels[84] = (off)
-        pixels[83] = (off)
-        pixels[67] = (off)
-        pixels[66] = (off)
-        pixels[65] = (off)
+        pixels[85] = (0, 0, 0)
+        pixels[84] = (0, 0, 0)
+        pixels[83] = (0, 0, 0)
+        pixels[67] = (0, 0, 0)
+        pixels[66] = (0, 0, 0)
+        pixels[65] = (0, 0, 0)
         pixels.show()
 
     elif number == 6:
@@ -898,9 +894,9 @@ def digitFour(number, color):
         pixels[83] = (color)
         pixels[84] = (color)
         pixels[85] = (color)
-        pixels[65] = (off)
-        pixels[66] = (off)
-        pixels[67] = (off)
+        pixels[65] = (0, 0, 0)
+        pixels[66] = (0, 0, 0)
+        pixels[67] = (0, 0, 0)
         pixels.show()
 
     elif number == 7:
@@ -913,18 +909,18 @@ def digitFour(number, color):
         pixels[77] = (color)
         pixels[78] = (color)
         pixels[79] = (color)
-        pixels[71] = (off)
-        pixels[72] = (off)
-        pixels[73] = (off)
-        pixels[74] = (off)
-        pixels[75] = (off)
-        pixels[76] = (off)
-        pixels[80] = (off)
-        pixels[81] = (off)
-        pixels[82] = (off)
-        pixels[83] = (off)
-        pixels[84] = (off)
-        pixels[85] = (off)
+        pixels[71] = (0, 0, 0)
+        pixels[72] = (0, 0, 0)
+        pixels[73] = (0, 0, 0)
+        pixels[74] = (0, 0, 0)
+        pixels[75] = (0, 0, 0)
+        pixels[76] = (0, 0, 0)
+        pixels[80] = (0, 0, 0)
+        pixels[81] = (0, 0, 0)
+        pixels[82] = (0, 0, 0)
+        pixels[83] = (0, 0, 0)
+        pixels[84] = (0, 0, 0)
+        pixels[85] = (0, 0, 0)
         pixels.show()
 
     elif number == 8:
@@ -970,63 +966,72 @@ def digitFour(number, color):
         pixels[80] = (color)
         pixels[81] = (color)
         pixels[82] = (color)
-        pixels[83] = (off)
-        pixels[84] = (off)
-        pixels[85] = (off)
+        pixels[83] = (0, 0, 0)
+        pixels[84] = (0, 0, 0)
+        pixels[85] = (0, 0, 0)
         pixels.show()
 
 # Example
 # digitOne(2, (255, 0 , 0))
 
-digit1 = 0
-digit2 = 0
-digit3 = 0
-digit4 = 0
+num = 0
 
-digitOne(digit1, (brightness))
-digitTwo(digit2, (brightness))
-digitThree(digit3, (brightness))
-digitFour(digit4, (brightness))
-pixels[42] = (brightness)
-pixels[43] = (brightness)
-pixels.show()
+def firstDigit():
+    global color
+    global num
+    digitOne(num, color)
 
-while True:
+def secondDigit():
+    global color
+    global num
+    digitTwo(num, color)
 
-    currentTime = datetime.datetime.now()
+def thirdDigit():
+    global color
+    global num
+    digitThree(num, color)
 
-    minutes = (currentTime.minute)
-    hours = (currentTime.hour)
+def fourthDigit():
+    global color
+    global num
+    digitFour(num, color)
 
-    # Minutes
-    if minutes <= 9:
-        digit1 = minutes
-        digit2 = 0
-    elif minutes > 9:
-        string = [int(i) for i in str(minutes)]
-        digit1 = (string[1])
-        digit2 = (string[0])
+try:
+   t1 = threading.Thread(target=firstDigit, args=()) 
+   t2 = threading.Thread(target=secondDigit, args=()) 
+   t3 = threading.Thread(target=thirdDigit, args=()) 
+   t4 = threading.Thread(target=fourthDigit, args=()) 
+except:
+   print('Error: unable to create thread')
 
-    # Hours
-    if hours <= 9:
-        digit3 = hours
-        digit4 = 0
-    elif hours > 9:
-        hours2 = hours - 12
-        if hours2 == 0:
-            digit3 = 2
-            digit4 = 1
-        elif hours2 <= 9:
-            digit3 = hours2
-            digit4 = 0
-        elif hours2 > 9:
-            string2 = [int(i) for i in str(hours2)]
-            digit3 = (string2[1])
-            digit4 = (string2[0])
+iterations = 0
 
-    pixels[42] = (brightness)
-    pixels[43] = (brightness)
-    digitOne(digit1, (brightness))
-    digitTwo(digit2, (brightness))
-    digitThree(digit3, (brightness))
-    digitFour(digit4, (brightness))
+while iterations < 100:
+    try:
+        t1 = threading.Thread(target=firstDigit, args=()) 
+        t2 = threading.Thread(target=secondDigit, args=()) 
+        t3 = threading.Thread(target=thirdDigit, args=()) 
+        t4 = threading.Thread(target=fourthDigit, args=()) 
+    except:
+        print('Error: unable to create thread')
+    try:
+        t1.start()
+        t2.start()
+        t3.start()
+        t4.start()
+    except:
+        print('Error: unable to start thread')
+
+    try:
+        t1.join()
+        t2.join()
+        t3.join()
+        t4.join()
+    except:
+        print('Error: unable to join thread')
+
+    if num >= 9:
+        num = 0
+    else:
+        num = num + 1
+    iterations = iterations + 1
