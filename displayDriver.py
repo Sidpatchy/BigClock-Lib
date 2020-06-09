@@ -7,6 +7,9 @@ pixels = neopixel.NeoPixel(board.D18, 86)
 def digitOne(number, color):
     display = number
 
+    pixels[42] = color
+    pixels[43] = color
+
     if display == 0:
         pixels[5] = (color)
         pixels[4] = (color)
@@ -248,6 +251,10 @@ def digitOne(number, color):
         pixels.show()
 
 def digitTwo(number, color):
+        
+    pixels[42] = color
+    pixels[43] = color
+
     if number == 0:
         pixels[26] = (color)
         pixels[25] = (color)
@@ -485,6 +492,10 @@ def digitTwo(number, color):
         pixels.show()
 
 def digitThree(number, color):
+        
+    pixels[42] = color
+    pixels[43] = color
+
     if number == 0:
         pixels[44] = (color)
         pixels[45] = (color)
@@ -725,6 +736,10 @@ def digitThree(number, color):
         pixels.show()
 
 def digitFour(number, color):
+        
+    pixels[42] = color
+    pixels[43] = color
+
     if number == 0:
         pixels[70] = (color)
         pixels[69] = (color)
