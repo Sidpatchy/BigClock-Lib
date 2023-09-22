@@ -32,8 +32,8 @@
 // Number of LEDs
 #define LED_COUNT 86
 
-const char* ssid = "Caspar";                    //  your network SSID (name)
-const char* password = "PoisonParamedicTerry";  // your network password
+const char* ssid = "";      //  your network SSID (name)
+const char* password = "";  // your network password
 
 const char* ntpServer = "time.nist.gov";
 const char* ntpServer2 = "pool.ntp.org";
